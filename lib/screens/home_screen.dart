@@ -6,6 +6,7 @@ import 'package:khadamatic_auth/cubit/home_cubit/home_cubit.dart';
 import 'package:khadamatic_auth/cubit/home_cubit/home_states.dart';
 import 'package:khadamatic_auth/models/best_tech_model.dart';
 import 'package:khadamatic_auth/models/categories_model.dart';
+import 'package:khadamatic_auth/screens/create_order_screen.dart';
 import 'package:khadamatic_auth/screens/sub_category_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -140,7 +141,11 @@ class HomeScreen extends StatelessWidget {
           children: List.generate(5, (index) => ratingIcon),
         ),
         OutlinedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)
+            => CreateOrderScreen(serviceID: 1,serviceName: model.userService!
+                    .subCategory!.name!),));
+          },
           child: Text('Order Now', style: TextStyle(color: KMainColor)),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           style: OutlinedButton.styleFrom(

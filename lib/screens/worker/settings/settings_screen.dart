@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khadamatic_auth/constants/endpoints.dart';
 import 'package:khadamatic_auth/cubit/worker/settings/technical_profile_cubit.dart';
 import 'package:khadamatic_auth/networks/authentication_dio_helper.dart';
+import 'package:khadamatic_auth/screens/login_screen.dart';
 import 'package:khadamatic_auth/screens/worker/settings/edit_technical_settings.dart';
+import 'package:khadamatic_auth/sharedpref/sharedpref.dart';
 import 'package:khadamatic_auth/widgets/settings/custom_settings_element_container.dart';
 
 import '../../../cubit_states/worker/settings/technical_profile_cubit_states.dart';
@@ -66,7 +68,11 @@ class SettingsScreen extends StatelessWidget {
                 CustomSettingsItemContainer(iconData: CupertinoIcons.textformat, text: 'تغيير اللغة', onButtonTextTapped: (){}),
                 CustomSettingsItemContainer(iconData: CupertinoIcons.money_dollar, text: 'محفظتى', onButtonTextTapped: (){}),
                 CustomSettingsItemContainer(iconData: CupertinoIcons.share_up, text: 'مشاركة التطبيق', onButtonTextTapped: (){}),
-                CustomSettingsItemContainer(iconData: Icons.logout, text: 'تسجيل الخروج', onButtonTextTapped: (){}),
+                CustomSettingsItemContainer(iconData: Icons.logout, text: 'تسجيل الخروج', onButtonTextTapped: (){
+                  SharedPref_Helper.sharedPreferences!.remove('token');
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen(),), (route)
+                  => false);
+                }),
               ],
             );
           }
