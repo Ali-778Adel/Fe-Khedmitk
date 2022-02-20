@@ -1,3 +1,15 @@
 abstract class WorkerHomepageStates{}
 class WHInitState extends WorkerHomepageStates{}
 class OnBottomNavBarItemSelectedState extends WorkerHomepageStates{}
+//GetTechnicalAllOrdersState
+class GetTechnicalAllOrdersLoadingState extends WorkerHomepageStates{}
+class GetTechnicalAllOrdersSuccessState extends WorkerHomepageStates{}
+class GetTechnicalAllOrdersFailureState extends WorkerHomepageStates{}
+//GetTechnicalSuccessOrders
+class GetTechnicalSuccessOrdersLoadingState extends WorkerHomepageStates{}
+class GetTechnicalSuccessOrdersSuccessState extends WorkerHomepageStates{}
+class GetTechnicalSuccessOrdersFailureState extends WorkerHomepageStates{}
+//GetTechnicalFailureState
+class GetTechnicalCanceledOrdersLoadingState extends WorkerHomepageStates{}
+class GetTechnicalCanceledOrdersSuccessState extends WorkerHomepageStates{}
+class GetTechnicalCanceledOrdersFailureState extends WorkerHomepageStates{}

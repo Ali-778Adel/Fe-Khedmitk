@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khadamatic_auth/components/ToastMessage.dart';
 import 'package:khadamatic_auth/cubit/worker/technical_register_cubit.dart';
 import 'package:khadamatic_auth/screens/login_screen.dart';
-import 'package:khadamatic_auth/screens/worker/worker_homepage.dart';
+import 'package:khadamatic_auth/screens/worker/technical_homelayout.dart';
 import 'package:khadamatic_auth/widgets/custom_elevated_button.dart';
 
 import '../../cubit_states/worker/technical_register_states.dart';

@@ -9,7 +9,7 @@ class CustomSettingsItemContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Container(
         height: 40,
         width: MediaQuery.of(context).size.width*.96,

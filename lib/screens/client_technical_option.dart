@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:khadamatic_auth/screens/register_screen.dart';
 import 'package:khadamatic_auth/screens/worker/tecnical_register_screen.dart';
-import 'package:khadamatic_auth/screens/worker/worker_homepage.dart';
+import 'package:khadamatic_auth/screens/worker/technical_homelayout.dart';
 class ClientTechnicalOptionScreen extends StatelessWidget {
   const ClientTechnicalOptionScreen({Key? key}) : super(key: key);
 
