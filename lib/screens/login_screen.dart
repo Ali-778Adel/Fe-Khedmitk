@@ -6,7 +6,7 @@ import 'package:khadamatic_auth/cubit/login_cubit.dart';
 import 'package:khadamatic_auth/cubit_states/login_state.dart';
 import 'package:khadamatic_auth/screens/app_layout.dart';
 import 'package:khadamatic_auth/screens/register_screen.dart';
-import 'package:khadamatic_auth/screens/worker/worker_homepage.dart';
+import 'package:khadamatic_auth/screens/worker/technical_homelayout.dart';
 import 'package:khadamatic_auth/widgets/custom_elevated_button.dart';
 
 class LoginScreen extends StatelessWidget {

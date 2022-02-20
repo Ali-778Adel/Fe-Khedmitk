@@ -4,11 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khadamatic_auth/constants/endpoints.dart';
 import 'package:khadamatic_auth/cubit/worker/settings/technical_profile_cubit.dart';
 import 'package:khadamatic_auth/networks/authentication_dio_helper.dart';
-import 'package:khadamatic_auth/screens/login_screen.dart';
 import 'package:khadamatic_auth/screens/worker/settings/edit_technical_settings.dart';
-import 'package:khadamatic_auth/sharedpref/sharedpref.dart';
 import 'package:khadamatic_auth/widgets/settings/custom_settings_element_container.dart';
-
 import '../../../cubit_states/worker/settings/technical_profile_cubit_states.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -60,19 +57,15 @@ class SettingsScreen extends StatelessWidget {
               const  SizedBox(
                   height: 5,
                 ),
-                CustomSettingsItemContainer(iconData: Icons.password, text: 'تغيير كلمة السر', onButtonTextTapped: (){}),
-                CustomSettingsItemContainer(iconData: Icons.edit, text: 'تعديل بياناتك', onButtonTextTapped: (){
+                CustomSettingsItemContainer(iconData: Icons.password, text: 'change password', onButtonTextTapped: (){}),
+                CustomSettingsItemContainer(iconData: Icons.edit, text: 'edit you data', onButtonTextTapped: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> EditTechnicalData()));
                   AuthenticationDioHelper.getTechnicalProfile(url: TechnicalProfile) ;               }),
-                CustomSettingsItemContainer(iconData: Icons.phone, text: 'اتصل بنا', onButtonTextTapped: (){}),
-                CustomSettingsItemContainer(iconData: CupertinoIcons.textformat, text: 'تغيير اللغة', onButtonTextTapped: (){}),
-                CustomSettingsItemContainer(iconData: CupertinoIcons.money_dollar, text: 'محفظتى', onButtonTextTapped: (){}),
-                CustomSettingsItemContainer(iconData: CupertinoIcons.share_up, text: 'مشاركة التطبيق', onButtonTextTapped: (){}),
-                CustomSettingsItemContainer(iconData: Icons.logout, text: 'تسجيل الخروج', onButtonTextTapped: (){
-                  SharedPref_Helper.sharedPreferences!.remove('token');
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen(),), (route)
-                  => false);
-                }),
+                CustomSettingsItemContainer(iconData: Icons.phone, text: 'call us', onButtonTextTapped: (){}),
+                CustomSettingsItemContainer(iconData: CupertinoIcons.textformat, text: 'change language', onButtonTextTapped: (){}),
+                CustomSettingsItemContainer(iconData: CupertinoIcons.money_dollar, text: 'wallet', onButtonTextTapped: (){}),
+                    CustomSettingsItemContainer(iconData: CupertinoIcons.share_up, text: 'share app', onButtonTextTapped: (){}),
+                CustomSettingsItemContainer(iconData: Icons.logout, text: 'log out ', onButtonTextTapped: (){}),
               ],
             );
           }
