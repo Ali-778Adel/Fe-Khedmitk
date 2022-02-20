@@ -1,0 +1,5 @@
+abstract class TechnicalProfileStates{}
+class TPInitState extends TechnicalProfileStates{}
+class GetTechnicalDataLoadingState extends TechnicalProfileStates{}
+class GetTechnicalDataSuccessState extends TechnicalProfileStates{}
+class GetTechnicalDataFailureState extends TechnicalProfileStates{}
