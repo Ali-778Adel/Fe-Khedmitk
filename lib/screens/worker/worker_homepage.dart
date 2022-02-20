@@ -10,7 +10,14 @@ class TechnicalHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body:const Center(child: Text('Technical HomePage '),),
+      body:BlocBuilder<WorkerHomePageCubit,WorkerHomepageStates>(
+        builder: (context,state){
+          return IndexedStack(
+            index: context.read<WorkerHomePageCubit>().currentIndex,
+            children:context.read<WorkerHomePageCubit>().widgetsgenerated ,
+          );
+        },
+      ),
       bottomNavigationBar: BlocBuilder<WorkerHomePageCubit,WorkerHomepageStates>(
           builder: (context,state) {
           return CustomNavBarWidget(

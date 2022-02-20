@@ -39,8 +39,10 @@ dependencies:
   persistent_bottom_nav_bar: ^4.0.2
   flex_color_scheme: ^4.2.0
   flutter_styled_toast: ^2.0.0
-  adobe_xd: ^1.0.0+1
+#  adobe_xd: ^1.0.0+1
   salomon_bottom_bar: ^3.2.0
+  flutter_svg: ^1.0.3
+  flutter_rating_bar: ^4.0.0
   ##/>
 
   ##network<\
@@ -104,3 +106,16 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Praise
+      fonts:
+        - asset: assests/fonts/Praise-Regular.ttf
+          weight: 400
+    - family: Poppins
+      fonts:
+        - asset: assests/fonts/Poppins-Regular.ttf
+          weight: 400
+    - family: Prata
+      fonts:
+        - asset: assests/fonts/Prata-Regular.ttf
+          weight: 400

@@ -10,8 +10,10 @@ import 'package:khadamatic_auth/networks/authentication_dio_helper.dart';
 import 'package:khadamatic_auth/screens/app_layout.dart';
 import 'package:khadamatic_auth/screens/client_technical_option.dart';
 import 'package:khadamatic_auth/screens/login_screen.dart';
+import 'package:khadamatic_auth/screens/worker/worker_homepage.dart';
 import 'package:khadamatic_auth/sharedpref/sharedpref.dart';
 
+import 'cubit/worker/settings/technical_profile_cubit.dart';
 import 'cubit/worker/technical_register_cubit.dart';
 
 void main() async{
@@ -50,13 +52,15 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => RegisterCubit()),
         BlocProvider(create: (context) => TechnicalRegisterCubit()),
         BlocProvider(create: (context) => WorkerHomePageCubit()),
+        BlocProvider(create: (context) => TechnicalProfileCubit().. getTechnicalProfileData()),
+
 
 
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
-        home: launch(),
+        home: TechnicalHomePage(),
       ),
     );
   }
