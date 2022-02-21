@@ -6,6 +6,8 @@ import 'package:khadamatic_auth/constants/constants.dart';
 import 'package:khadamatic_auth/constants/endpoints.dart';
 import 'package:khadamatic_auth/cubit/transaction_cubit/transaction_states.dart';
 import 'package:khadamatic_auth/models/client_orders_model.dart';
+import 'package:khadamatic_auth/models/client_profile_model.dart';
+import 'package:khadamatic_auth/models/get_offers_deal_model.dart';
 import 'package:khadamatic_auth/networks/authentication_dio_helper.dart';
 
 class TransactionCubit extends Cubit<TransactionStates>{
@@ -45,5 +47,35 @@ emit(GetTransactionSuccess(clientOrdersModel!));
     else{
       return Colors.white;
     }
+  }
+  ClientProfileModel? clientProfileModel;
+  void getClientProfile(){
+    AuthenticationDioHelper.dio!.get(clientProfile,options: Options(headers:
+    {'Accept':'application/json','Authorization':'Bearer $token',},)).then(
+            (value) {
+              clientProfileModel = ClientProfileModel.fromJson(value.data);
+              emit(GetClientProfileSuccess(clientProfileModel!));
+            }).catchError((error){
+              print(error.toString());
+              emit(GetClientProfileError(error.toString()));
+    });
+  }
+  GetOffersDealModel? getOffersDealModel;
+  void getOffersDeal(num orderID){
+    emit(GetOffersDealLoading());
+    AuthenticationDioHelper.dio!.get(getOffersDealEndPoint,options: Options
+      (headers: {'Accept':'application/json','Authorization':'Bearer $token',},
+    ),queryParameters: {
+      'order_id':orderID,
+    }).then((value) {
+      getOffersDealModel = GetOffersDealModel.fromJson(value.data);
+      print(value.data);
+      emit(GetOffersDealSuccess(getOffersDealModel!));
+
+    }).catchError((error){
+      print(error.toString());
+      emit(GetOffersDealError(error.toString()));
+
+    });
   }
 }

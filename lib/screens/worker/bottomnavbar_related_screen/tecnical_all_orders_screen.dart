@@ -33,11 +33,11 @@ class TechnicalAllOrdersScreen  extends StatelessWidget {
 
                     );
                   }else{
-                    return const Center(child: Text('no oreders yet.... ',
+                    return const Center(child: Text('no orders yet.... ',
                       style: TextStyle(color: KMainColor,fontSize: 22),),);
                   }
                 }else{
-                  return  const Center(child: Text('no oreders yet.... ',
+                  return  const Center(child: Text('no orders yet.... ',
                     style: TextStyle(color: KMainColor,fontSize: 22),),);
                 }
 

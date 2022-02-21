@@ -12,3 +12,5 @@ const String allClientOrders= '/show-all-client-orders';
 const String clientProfile= '/profile';
 const String subCategory = '/all-sub-categories/';
 const String requestOrder = '/request-order';
+const String service='/services/';
+const String getOffersDealEndPoint= '/order-deals';

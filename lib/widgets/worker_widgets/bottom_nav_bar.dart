@@ -16,19 +16,19 @@ class CustomNavBarWidget extends StatelessWidget {
   List<PersistentBottomNavBarItem> navBarsItems= [
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.home),
-        title: ("الرئيسية"),
+        title: ("Home"),
         activeColorPrimary: FlexColor.blueDarkSecondary,
         inactiveColorPrimary:FlexColor.indigoLightPrimaryVariant ,
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.collections_solid),
-        title: ("طلباتى"),
+        title: ("My Orders"),
         activeColorPrimary: FlexColor.blueDarkSecondary,
         inactiveColorPrimary:FlexColor.indigoLightPrimaryVariant ,
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.square_favorites),
-        title: ("العمليات"),
+        title: ("Transactions"),
         activeColorPrimary: FlexColor.blueDarkSecondary,
         inactiveColorPrimary:FlexColor.indigoLightPrimaryVariant ,
       ),

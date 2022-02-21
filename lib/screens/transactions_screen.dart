@@ -5,6 +5,7 @@ import 'package:khadamatic_auth/constants/constants.dart';
 import 'package:khadamatic_auth/cubit/transaction_cubit/transaction_cubit.dart';
 import 'package:khadamatic_auth/cubit/transaction_cubit/transaction_states.dart';
 import 'package:khadamatic_auth/models/client_orders_model.dart';
+import 'package:khadamatic_auth/screens/order_details_screen.dart';
 
 class TransactionsScreen extends StatelessWidget {
   const TransactionsScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class TransactionsScreen extends StatelessWidget {
         if(state is GetTransactionSuccess) {
           return  ListView.separated(itemBuilder: (context, index) {
           return buildClientTransactions(context, TransactionCubit.get
-            (context).clientOrdersModel!.data![index]);
+            (context).clientOrdersModel!.data![index],index);
         }, separatorBuilder:(context,index)=> const Divider(thickness: 1),
             itemCount: TransactionCubit.get(context).clientOrdersModel!.data!
                 .length);
@@ -30,77 +31,85 @@ class TransactionsScreen extends StatelessWidget {
       },
     ));
   }
-  Widget buildClientTransactions(context,DataClientOrders model){
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            height: 100,
-            width: double.infinity,
-            decoration: const BoxDecoration(color: KMainColor,borderRadius:
-            const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius
-                .circular(20))),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+  Widget buildClientTransactions(context,DataClientOrders model,index){
+    return InkWell(
+      onTap: (){
+        print(index);
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) =>
+            OrderDetailsScreen(model: model,index: index,notes: model.notes!)
+          ,));
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              width: double.infinity,
+              decoration: const BoxDecoration(color: KMainColor,borderRadius:
+              const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius
+                  .circular(20))),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
 
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.link,color: Colors.white),
-                          const SizedBox(width: 10,),
-                          Text(model.service!.name!,style: Theme.of(context)
-                              .textTheme.headline6),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Icon(Icons.calendar_today_outlined,color: Colors.white),
-                          const SizedBox(width: 10,),
-                          Text(model.date!,style: Theme.of
-                            (context)
-                              .textTheme.headline6),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Icon(Icons.circle,color: Colors.white),
-                          const SizedBox(width: 10,),
-                          Text(model.service!.name!,style: Theme.of
-                            (context)
-                              .textTheme.headline6),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Column(children: [
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.link,color: Colors.white),
+                            const SizedBox(width: 10,),
+                            Text(model.service!.name!,style: Theme.of(context)
+                                .textTheme.headline6),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.calendar_today_outlined,color: Colors.white),
+                            const SizedBox(width: 10,),
+                            Text(model.date!,style: Theme.of
+                              (context)
+                                .textTheme.headline6),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.circle,color: Colors.white),
+                            const SizedBox(width: 10,),
+                            Text(model.service!.name!,style: Theme.of
+                              (context)
+                                .textTheme.headline6),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(children: [
 
-                     Icon(Icons.check_circle_outline_rounded,color: TransactionCubit.get(context).changeTransactionColor
-                      (model)),
-                    Text(model.orderType!.type!,style: TextStyle(color: TransactionCubit.get(context).changeTransactionColor
-                      (model),fontWeight: FontWeight.bold),),
-                    Text(model.total!+' L.E',style: Theme.of(context)
-                        .textTheme
-                        .headline5!.copyWith(color: Colors.white),),
+                       Icon(Icons.check_circle_outline_rounded,color: TransactionCubit.get(context).changeTransactionColor
+                        (model)),
+                      Text(model.orderType!.type!,style: TextStyle(color: TransactionCubit.get(context).changeTransactionColor
+                        (model),fontWeight: FontWeight.bold),),
+                      Text(model.total!+' L.E',style: Theme.of(context)
+                          .textTheme
+                          .headline5!.copyWith(color: Colors.white),),
 
 
-                  ]),
-                ],
+                    ]),
+                  ],
+                ),
               ),
             ),
-          ),
-          Divider(
-            height: 1,
-            thickness: 5,
-            color: TransactionCubit.get(context).changeTransactionColor
-              (model),
-          ),
-        ],
+            Divider(
+              height: 1,
+              thickness: 5,
+              color: TransactionCubit.get(context).changeTransactionColor
+                (model),
+            ),
+          ],
+        ),
       ),
     );
   }

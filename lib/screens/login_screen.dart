@@ -196,12 +196,9 @@ class LoginScreen extends StatelessWidget {
                     message: ' you logged in successfully',
                     enumState: EnumState.SUCCESS);
                 if (state.loginModel.type==1||state.loginModel.type==5){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>const AppLayout()),
-                  );
-
+                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => AppLayout(),), (route)
+                 =>
+                 false);
                 }else{
                   Navigator.push(
                     context,
