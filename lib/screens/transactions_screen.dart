@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:khadamatic_auth/constants/constants.dart';
-import 'package:khadamatic_auth/cubit/transaction_cubit/transaction_cubit.dart';
-import 'package:khadamatic_auth/cubit/transaction_cubit/transaction_states.dart';
-import 'package:khadamatic_auth/models/client_orders_model.dart';
-import 'package:khadamatic_auth/screens/order_details_screen.dart';
+
+import '../constants/constants.dart';
+import '../cubit/transaction_cubit/transaction_cubit.dart';
+import '../cubit/transaction_cubit/transaction_states.dart';
+import '../models/client_orders_model.dart';
+import 'order_details_screen.dart';
+
 
 class TransactionsScreen extends StatelessWidget {
   const TransactionsScreen({Key? key}) : super(key: key);

@@ -2,6 +2,7 @@
 const String ClientRegister='/client-register';
 const String TechnicalRegister='/technical-register';
 const String Login='/login';
+const String OferOrder='/offer-deal';
 const String AllTechnicalOrders='/show-all-technical-orders?page=1';
 const String TechnicalSuccessOrder='/technical-success-orders?page=1';
 const String TechnicalCanceledOrder='/technical-canceled-orders';

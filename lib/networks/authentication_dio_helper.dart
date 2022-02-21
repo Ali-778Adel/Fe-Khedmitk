@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:khadamatic_auth/constants/constants.dart';
 
 class AuthenticationDioHelper {
   static Dio? dio;
@@ -45,7 +46,7 @@ class AuthenticationDioHelper {
       )async{
     return await dio!.get(url
         ,options:Options(
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWNhM2M4NDg2NzY3ODlhNTIzMTEyY2I3ZDYyYjcwZjhlNzk4NWQ2OWY4Yjc3ZjI0NGViNzIyY2Q4ZjZlYWM0MWQwNjdkZjFlMmI2YjkzNDIiLCJpYXQiOjE2NDUzNjQ5NzksIm5iZiI6MTY0NTM2NDk3OSwiZXhwIjoxNjc2OTAwOTc5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.cYiq_H8pa1i7jZLWOUbgQIkFVpkT3Es3Coxi1njo0B5uR1Qazbh3dKJkF2zXh1rtfwdXcXIlHY6xdjQZrNL_OOIoQ_sSEN586CmujnKcQJu7A_hr-bgVNrcmR5sfHC2Lq9hjvWPfPE27adw_zrUlDoPb7Fg08yrxptOK8QVJzX6lCS-m8HG5JRnmLI06P6JFiU6i3r9t6HGTriWT77U3u-pAmjDm91F6EVoobMq110vPWRqy9FMcU9w5iS_nvzDlOBMv7ORPpIapo_MLV3X1DowosujmYqOfCCm-HRxCDtr-eXioDSMmR-ky_LIbJkMQ_j7MCZnY2NCvgwCp9HbEssNn6u3yHL2R6mtgyNnfSqOL9b9MXEVz2F5Wqn8tjHCmGsqN7f2kQNUJ6BysL_dCHZLAUIKetv-NcDwbgWPLppDK-_-7r8XnU4rLO4grMUZJ3a_OqxN-EOjgcf03ybWd85p56zeRGVT60Tdm369nXs5Ja28QkXn4_lsY3Xs0G1G_Y0LvVLFNah0-L7raNL6h0er5EVSDlt5o9kxu4K6N_CqXHuZWrk2U40obLyif2E77AWwI4UKSgO-J01j2U9TaptsqxmtqQMhLdCb7zih19L0V8KwhPcGfvY0NAymxiwVnDx1-DvhUIGM3GVDEv6ULk31zErWrN2r-6uDqhlefndo'},
+            headers: {'Authorization': 'Bearer ${token}'},
             followRedirects: false,
             validateStatus: (status) {
               return status! <= 500;
@@ -59,7 +60,7 @@ class AuthenticationDioHelper {
       )async{
     return await dio!.get(url
         ,options:Options(
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWNhM2M4NDg2NzY3ODlhNTIzMTEyY2I3ZDYyYjcwZjhlNzk4NWQ2OWY4Yjc3ZjI0NGViNzIyY2Q4ZjZlYWM0MWQwNjdkZjFlMmI2YjkzNDIiLCJpYXQiOjE2NDUzNjQ5NzksIm5iZiI6MTY0NTM2NDk3OSwiZXhwIjoxNjc2OTAwOTc5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.cYiq_H8pa1i7jZLWOUbgQIkFVpkT3Es3Coxi1njo0B5uR1Qazbh3dKJkF2zXh1rtfwdXcXIlHY6xdjQZrNL_OOIoQ_sSEN586CmujnKcQJu7A_hr-bgVNrcmR5sfHC2Lq9hjvWPfPE27adw_zrUlDoPb7Fg08yrxptOK8QVJzX6lCS-m8HG5JRnmLI06P6JFiU6i3r9t6HGTriWT77U3u-pAmjDm91F6EVoobMq110vPWRqy9FMcU9w5iS_nvzDlOBMv7ORPpIapo_MLV3X1DowosujmYqOfCCm-HRxCDtr-eXioDSMmR-ky_LIbJkMQ_j7MCZnY2NCvgwCp9HbEssNn6u3yHL2R6mtgyNnfSqOL9b9MXEVz2F5Wqn8tjHCmGsqN7f2kQNUJ6BysL_dCHZLAUIKetv-NcDwbgWPLppDK-_-7r8XnU4rLO4grMUZJ3a_OqxN-EOjgcf03ybWd85p56zeRGVT60Tdm369nXs5Ja28QkXn4_lsY3Xs0G1G_Y0LvVLFNah0-L7raNL6h0er5EVSDlt5o9kxu4K6N_CqXHuZWrk2U40obLyif2E77AWwI4UKSgO-J01j2U9TaptsqxmtqQMhLdCb7zih19L0V8KwhPcGfvY0NAymxiwVnDx1-DvhUIGM3GVDEv6ULk31zErWrN2r-6uDqhlefndo'},
+            headers: {'Authorization': 'Bearer ${token}'},
             followRedirects: false,
             validateStatus: (status) {
               return status! <= 500;
@@ -73,11 +74,20 @@ class AuthenticationDioHelper {
       )async{
     return await dio!.get(url
         ,options:Options(
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWNhM2M4NDg2NzY3ODlhNTIzMTEyY2I3ZDYyYjcwZjhlNzk4NWQ2OWY4Yjc3ZjI0NGViNzIyY2Q4ZjZlYWM0MWQwNjdkZjFlMmI2YjkzNDIiLCJpYXQiOjE2NDUzNjQ5NzksIm5iZiI6MTY0NTM2NDk3OSwiZXhwIjoxNjc2OTAwOTc5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.cYiq_H8pa1i7jZLWOUbgQIkFVpkT3Es3Coxi1njo0B5uR1Qazbh3dKJkF2zXh1rtfwdXcXIlHY6xdjQZrNL_OOIoQ_sSEN586CmujnKcQJu7A_hr-bgVNrcmR5sfHC2Lq9hjvWPfPE27adw_zrUlDoPb7Fg08yrxptOK8QVJzX6lCS-m8HG5JRnmLI06P6JFiU6i3r9t6HGTriWT77U3u-pAmjDm91F6EVoobMq110vPWRqy9FMcU9w5iS_nvzDlOBMv7ORPpIapo_MLV3X1DowosujmYqOfCCm-HRxCDtr-eXioDSMmR-ky_LIbJkMQ_j7MCZnY2NCvgwCp9HbEssNn6u3yHL2R6mtgyNnfSqOL9b9MXEVz2F5Wqn8tjHCmGsqN7f2kQNUJ6BysL_dCHZLAUIKetv-NcDwbgWPLppDK-_-7r8XnU4rLO4grMUZJ3a_OqxN-EOjgcf03ybWd85p56zeRGVT60Tdm369nXs5Ja28QkXn4_lsY3Xs0G1G_Y0LvVLFNah0-L7raNL6h0er5EVSDlt5o9kxu4K6N_CqXHuZWrk2U40obLyif2E77AWwI4UKSgO-J01j2U9TaptsqxmtqQMhLdCb7zih19L0V8KwhPcGfvY0NAymxiwVnDx1-DvhUIGM3GVDEv6ULk31zErWrN2r-6uDqhlefndo'},
+            headers: {'Authorization': 'Bearer ${token}'},
             followRedirects: false,
             validateStatus: (status) {
               return status! <= 500;
             }
         )).catchError((error){print('error on get technicalProfileData${error.toString()}');});
+  }
+  static Future<Response> offerDeal(
+      {required String url,
+        required Map<String, dynamic> data,
+        String? token}) async {
+    dio!.options.headers = { 'Authorization': 'Bearer ${token}'};
+    return await dio!.post(url, data: data).catchError((error){
+      print('error in send data in dio package${error.toString()}');
+    });
   }
 }

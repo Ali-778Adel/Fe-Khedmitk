@@ -13,3 +13,7 @@ class GetTechnicalSuccessOrdersFailureState extends WorkerHomepageStates{}
 class GetTechnicalCanceledOrdersLoadingState extends WorkerHomepageStates{}
 class GetTechnicalCanceledOrdersSuccessState extends WorkerHomepageStates{}
 class GetTechnicalCanceledOrdersFailureState extends WorkerHomepageStates{}
+//
+class AcceptOfferLoadingState extends WorkerHomepageStates{}
+class AcceptOfferSuccessState extends WorkerHomepageStates{}
+class AcceptOfferFailureState extends WorkerHomepageStates{}

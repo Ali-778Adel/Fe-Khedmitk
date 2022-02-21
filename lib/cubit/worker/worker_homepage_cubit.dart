@@ -43,12 +43,12 @@ class WorkerHomePageCubit extends Cubit<WorkerHomepageStates>{
  getTechnicalAllOrders()async{
     emit( GetTechnicalAllOrdersLoadingState ());
   await AuthenticationDioHelper.getAllTechnicalOrders(url: AllTechnicalOrders).then((value) {
-     allTechnicalOrdersModel=AllTechnicalOrdersModel.fromJson(value.data);
+     allTechnicalOrdersModel= AllTechnicalOrdersModel.fromJson(value.data);
      print(allTechnicalOrdersModel!.data![0].address);
      emit(GetTechnicalAllOrdersSuccessState());
-    }).catchError((error){
-      print ('error on getTechnicalAllOrders methos ${error.toString()} ');
-      emit(GetTechnicalAllOrdersFailureState());
+  }).catchError((error){
+    emit(GetTechnicalAllOrdersFailureState());
+    print ('error on getTechnicalAllOrders methos ${error.toString()} ');
   });
  }
  //getTechnicalSuccessOrders
@@ -75,6 +75,17 @@ class WorkerHomePageCubit extends Cubit<WorkerHomepageStates>{
       emit(GetTechnicalCanceledOrdersFailureState());
 
     });
+
+  }
+  acceptOffer({String?total}){
+    emit(AcceptOfferLoadingState());
+AuthenticationDioHelper.offerDeal(url: OferOrder,
+data: {'order_id':'9',
+    'total':'$total'}
+    ).then((value) {
+      print('accept offer return ${value.data}');
+      emit(AcceptOfferSuccessState());
+}).catchError((error){print('error on send offer data');emit(AcceptOfferFailureState());});
 
   }
 }

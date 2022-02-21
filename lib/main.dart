@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khadamatic_auth/constants/AppThemes.dart';
@@ -9,12 +8,7 @@ import 'package:khadamatic_auth/cubit/worker/worker_homepage_cubit.dart';
 import 'package:khadamatic_auth/networks/authentication_dio_helper.dart';
 import 'package:khadamatic_auth/screens/app_layout.dart';
 import 'package:khadamatic_auth/screens/client_technical_option.dart';
-import 'package:khadamatic_auth/screens/login_screen.dart';
-import 'package:khadamatic_auth/screens/worker/bottomnavbar_related_screen/technical_home_page.dart';
-import 'package:khadamatic_auth/screens/worker/technical_homelayout.dart';
 import 'package:khadamatic_auth/sharedpref/sharedpref.dart';
-import 'package:khadamatic_auth/widgets/worker_widgets/technical_order_content_item.dart';
-
 import 'cubit/worker/settings/technical_profile_cubit.dart';
 import 'cubit/worker/technical_register_cubit.dart';
 
@@ -53,7 +47,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => RegisterCubit()),
         BlocProvider(create: (context) => TechnicalRegisterCubit()),
-        BlocProvider(create: (context) => WorkerHomePageCubit()..getTechnicalAllOrders()..getTechnicalSuccessOrders()..getTechnicalFailedOrders()),
+        BlocProvider(create: (context) => WorkerHomePageCubit()..getTechnicalAllOrders()),
         BlocProvider(create: (context) => TechnicalProfileCubit().. getTechnicalProfileData()),
 
 
@@ -62,7 +56,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
-        home:const TechnicalHomePage(),
+        home:const ClientTechnicalOptionScreen(),
       ),
     );
   }

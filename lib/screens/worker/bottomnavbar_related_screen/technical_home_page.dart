@@ -14,29 +14,39 @@ class TechnicalHomeScreen  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
-    child:  BlocBuilder<WorkerHomePageCubit,WorkerHomepageStates>(
-      builder: (context,state){
-        WorkerHomePageCubit workerHomePageCubit=WorkerHomePageCubit.get(context);
-        return ListView.builder(
-          itemExtent: 200,
-            itemCount: workerHomePageCubit.allTechnicalOrdersModel!.data!.length,
-            physics:const BouncingScrollPhysics(),
-            itemBuilder: (context,index){
-         if(workerHomePageCubit.allTechnicalOrdersModel!.data!.isNotEmpty) {
-           return CustomTechnicalOrderContentItem(
-             name:workerHomePageCubit.allTechnicalOrdersModel!.data![index].client!.name ,
-             total:workerHomePageCubit.allTechnicalOrdersModel!.data![index].total ,
-             decription: workerHomePageCubit.allTechnicalOrdersModel!.data![index].service!.nameAr ,
-             address:workerHomePageCubit.allTechnicalOrdersModel!.data![index].address ,
+      child:  BlocBuilder<WorkerHomePageCubit,WorkerHomepageStates>(
+        builder: (context,state){
+          WorkerHomePageCubit workerHomePageCubit=WorkerHomePageCubit.get(context);
+          Widget buildListView({required int index}){
+            if(state is  GetTechnicalAllOrdersLoadingState){
+              return const Center(child:CircularProgressIndicator());
+            }else if (State is GetTechnicalAllOrdersSuccessState) {
+              if(workerHomePageCubit.allTechnicalOrdersModel!.data!.isNotEmpty) {
+                return CustomTechnicalOrderContentItem(
+                  name:workerHomePageCubit.allTechnicalOrdersModel!.data![index].client!.name ,
+                  total:workerHomePageCubit.allTechnicalOrdersModel!.data![index].total ,
+                  decription: workerHomePageCubit.allTechnicalOrdersModel!.data![index].service!.nameAr ,
+                  address:workerHomePageCubit.allTechnicalOrdersModel!.data![index].address ,
 
-           );
-         }else{
-           return const Center(child: Text('no oreders yet.... ',
-             style: TextStyle(color: KMainColor,fontSize: 22),),);
-         }
+                );
+              }else{
+                return const Center(child:Text('No Oders Yet'));
+              }
+
+            }
+            return const Center(child:Text('No Oders Yet'));
+          }
+          return ListView.builder(
+              itemExtent: 200,
+            itemCount:1,
+              physics:const BouncingScrollPhysics(),
+              itemBuilder: (context,index){
+                return buildListView(index: index);
+
+              },
 
 
-        });
-      },
-    ),
+          );
+        },
+      ),
     );}}

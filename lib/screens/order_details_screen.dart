@@ -12,10 +12,10 @@ import 'package:khadamatic_auth/models/get_offers_deal_model.dart';
 import '../cubit/home_cubit/home_states.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
-   OrderDetailsScreen({Key? key, required this.model, required this.index, required this.notes}) : super(key: key);
-   final DataClientOrders model;
-   final int index;
-   final String notes;
+   OrderDetailsScreen({Key? key,  this.model,  this.index,  this.notes}) : super(key: key);
+   final DataClientOrders? model;
+   final int ?index;
+   final String ?notes;
 
   @override
   State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
@@ -33,7 +33,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   void initState() {
      print('order index${widget.index}');
      print(widget.notes);
-     customerNoteController.text = widget.notes;
+     customerNoteController.text = widget.notes!;
 
 
     super.initState();
@@ -42,7 +42,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
    @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TransactionCubit()..getClientProfile()..getOffersDeal(widget.model.id!),
+      create: (context) => TransactionCubit()..getClientProfile()..getOffersDeal(widget.model!.id!),
       child: BlocConsumer<TransactionCubit,TransactionStates>(
         listener: (context, state) {
 
@@ -61,8 +61,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                 Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(radius: 50,backgroundImage: AssetImage('assests/logos/logo4.png')),
-                  Padding(
+                 const CircleAvatar(radius: 50,backgroundImage: AssetImage('assests/logos/logo4.png')),
+                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +73,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                         TextStyle
                           (fontSize: 22,color:
                         KMainColor)),
-                        Text(widget.model.service!.name!),
+                        Text(widget.model!.service!.name!),
 
                       ],
                     ),
@@ -84,7 +84,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               const SizedBox(
                 height: 25,
               ),
-              Text(widget.model.service!.name!),
+              Text(widget.model!.service!.name!),
               SizedBox(height: 25,),
               Text('order notes',style: TextStyle(fontSize: 18,color: KMainColor)),
               SizedBox(height: 10,),
@@ -99,7 +99,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                     hintText: 'Describe your '
                         'require task',border: OutlineInputBorder
                   (borderRadius: BorderRadius.circular(20))),),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
               Text('Provided Images',style: TextStyle(fontSize: 18,color: KMainColor)),
 
@@ -123,7 +123,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
               Row(
                 children:  <Widget>[
                   Icon(Icons.location_on_rounded,color: KJobColor),
-                  Text(widget.model.address!,style: TextStyle(fontSize: 18,color: KMainColor)),
+                  Text(widget.model!.address!,style: TextStyle(fontSize: 18,color: KMainColor)),
                 ],
               ),
               SizedBox(height: 20,),
