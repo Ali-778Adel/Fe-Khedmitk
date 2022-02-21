@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   String link =
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxiJQBK4qrR_l2f3OHLP0IdXggEoOH-3OVgQ&usqp=CAU';
-  Widget ratingIcon = Icon(
+  Widget ratingIcon =const Icon(
     Icons.star,
     color: Colors.amber,
     size: 15,
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                             return buildBestTech(
                                 context, cubit.bestTechModel!.data![index]);
                           },
-                          separatorBuilder: (context, index) => SizedBox(
+                          separatorBuilder: (context, index) =>const SizedBox(
                                 width: 10,
                               ),
                           itemCount: cubit.bestTechModel!.data!.length),

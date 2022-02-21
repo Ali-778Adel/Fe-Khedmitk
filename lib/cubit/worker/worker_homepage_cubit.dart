@@ -44,8 +44,9 @@ class WorkerHomePageCubit extends Cubit<WorkerHomepageStates>{
     emit( GetTechnicalAllOrdersLoadingState ());
   await AuthenticationDioHelper.getAllTechnicalOrders(url: AllTechnicalOrders).then((value) {
      allTechnicalOrdersModel= AllTechnicalOrdersModel.fromJson(value.data);
-     print(allTechnicalOrdersModel!.data![0].address);
+     print('tolalllllllllllllllllll ${allTechnicalOrdersModel!.total}');
      emit(GetTechnicalAllOrdersSuccessState());
+
   }).catchError((error){
     emit(GetTechnicalAllOrdersFailureState());
     print ('error on getTechnicalAllOrders methos ${error.toString()} ');
